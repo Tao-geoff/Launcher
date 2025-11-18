@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android"
     android:constantSize="true"
-    android:dither="true"
-    >
-     <item android:state_selected="true">
+    android:dither="true">
+
+    <item android:state_selected="true">
         <layer-list>
             <item>
-                <include layout="@drawable/add_apk_background" />
+                <shape android:shape="rectangle">
+                    <corners android:radius="40dp" />
+                    <solid android:color="#d1d2cd" /> 
+                </shape>
             </item>
-			<item
-                android:scaleX="1.1" 
-                android:scaleY="1.1" 
-                android:gravity="center"> 
-                <include layout="@drawable/add_apk_background" />
+            <item
+                android:left="160dp"
+                android:top="140dp"
+                android:right="160dp"
+                android:bottom="140dp">
+                <bitmap
+                    android:src="@drawable/add_icon"
+                    android:gravity="center" />
             </item>
         </layer-list>
-     </item>
-	 <item>
-        <include layout="@drawable/add_apk_background" />
+    </item>
+
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="40dp" />
+                    <solid android:color="#d1d2cd" /> 
+                </shape>
+            </item>
+            <item
+                android:left="160dp"
+                android:top="140dp"
+                android:right="160dp"
+                android:bottom="140dp">
+                <bitmap
+                    android:src="@drawable/add_icon"
+                    android:gravity="center" />
+            </item>
+        </layer-list>
     </item>
 </selector>

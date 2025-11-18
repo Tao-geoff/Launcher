@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">launcher</string>
+    <!-- 为TV Launcher定义的主题 -->
+    <style name="Theme.Launcher" parent="Theme.AppCompat.NoActionBar">
+        <!-- 可以在这里添加自定义属性 -->
+    </style>
 </resources>
