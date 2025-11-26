@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePageActivity"
-    tools:ignore="MissingClass">
+    tools:ignore="MissingClass"
+    android:background="@drawable/wallpaper">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="300dp"
-        android:layout_height="280dp"
-        android:background="@drawable/add_apk_selector"
-
-        />
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/add_apk_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingStart="30dp"
+        android:layout_marginBottom="50dp"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
