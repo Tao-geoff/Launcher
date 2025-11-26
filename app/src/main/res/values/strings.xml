@@ -4,4 +4,8 @@
     <style name="Theme.Launcher" parent="Theme.AppCompat.NoActionBar">
         <!-- 可以在这里添加自定义属性 -->
     </style>
+    <string name="recommended_apps">Recommended Apps</string>
+    <string name="installed_apps">Installed Apps</string>
+    <string name="system_apps">System Apps</string>
+    <string name="folder">Folder</string>
 </resources>

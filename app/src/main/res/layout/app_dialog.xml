@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background=""
+        android:background="@drawable/apps_dialog_title_back"
+        android:layout_gravity="center"
         >
         <Button
+            android:id="@+id/recommended_apps"
             android:layout_width="293dp"
             android:layout_height="76dp"
-            android:background=""
+            android:text="@string/recommended_apps"
+            android:textSize="20sp"
+            android:background="@drawable/apps_dialog_title_btn_back"
             />
-
-
+        <Button
+            android:id="@+id/installed_apps"
+            android:layout_width="293dp"
+            android:layout_height="76dp"
+            android:text="@string/installed_apps"
+            android:textSize="20sp"
+            android:background="@drawable/apps_dialog_title_btn_back"
+            />
+        <Button
+            android:id="@+id/folder"
+            android:layout_width="293dp"
+            android:layout_height="76dp"
+            android:text="@string/folder"
+            android:textSize="20sp"
+            android:background="@drawable/apps_dialog_title_btn_back"
+            />
+        <Button
+            android:id="@+id/system_apps"
+            android:layout_width="293dp"
+            android:layout_height="76dp"
+            android:text="@string/system_apps"
+            android:textSize="20sp"
+            android:background="@drawable/apps_dialog_title_btn_back"
+            />
     </LinearLayout>
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/apps_dialog_frame"
+        android:layout_width="1340dp"
+        android:layout_height="864dp"
+        android:background="@drawable/apps_dialog_background"
+        android:paddingStart="30dp"
+        android:layout_marginBottom="50dp"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
