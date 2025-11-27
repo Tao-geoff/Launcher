@@ -10,8 +10,8 @@
         >
         <Button
             android:id="@+id/apk_button"
-            android:layout_width="150dp"
-            android:layout_height="84dp"
+            android:layout_width="200dp"
+            android:layout_height="112dp"
             android:background="@drawable/add_apk_selector"
             android:gravity="center"
             android:padding="8dp"

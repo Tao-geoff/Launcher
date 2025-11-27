@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/Transparency"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -10,46 +11,50 @@
         android:background="@drawable/apps_dialog_title_back"
         android:layout_gravity="center"
         >
-        <Button
+        <TextView
             android:id="@+id/recommended_apps"
-            android:layout_width="293dp"
-            android:layout_height="76dp"
+            android:layout_width="195dp"
+            android:layout_height="50dp"
             android:text="@string/recommended_apps"
-            android:textSize="20sp"
+            android:gravity="center"
+            android:textSize="18sp"
             android:background="@drawable/apps_dialog_title_btn_back"
             />
-        <Button
+        <TextView
             android:id="@+id/installed_apps"
-            android:layout_width="293dp"
-            android:layout_height="76dp"
+            android:layout_width="195dp"
+            android:layout_height="50dp"
             android:text="@string/installed_apps"
-            android:textSize="20sp"
+            android:gravity="center"
+            android:textSize="18sp"
             android:background="@drawable/apps_dialog_title_btn_back"
             />
-        <Button
+        <TextView
             android:id="@+id/folder"
-            android:layout_width="293dp"
-            android:layout_height="76dp"
+            android:layout_width="195dp"
+            android:layout_height="50dp"
             android:text="@string/folder"
-            android:textSize="20sp"
+            android:gravity="center"
+            android:textSize="18sp"
             android:background="@drawable/apps_dialog_title_btn_back"
             />
-        <Button
+        <TextView
             android:id="@+id/system_apps"
-            android:layout_width="293dp"
-            android:layout_height="76dp"
+            android:layout_width="195dp"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:text="@string/system_apps"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:background="@drawable/apps_dialog_title_btn_back"
             />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/apps_dialog_frame"
-        android:layout_width="1340dp"
-        android:layout_height="864dp"
+        android:layout_width="893dp"
+        android:layout_height="576dp"
         android:background="@drawable/apps_dialog_background"
-        android:paddingStart="30dp"
-        android:layout_marginBottom="50dp"
+        android:padding="30dp"
+        android:layout_marginTop="30dp"
         >
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

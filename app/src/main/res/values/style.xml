@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TransparentDialog" parent="Theme.AppCompat.Dialog">
+        <!-- 设置窗口背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 去除标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

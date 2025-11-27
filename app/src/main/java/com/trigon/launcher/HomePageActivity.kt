@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.trigon.launcher.adapter.APKAdapter
+import com.trigon.launcher.dialog.AppDialogFragment
 import com.trigon.launcher.vo.APKItem
 
 class HomePageActivity : AppCompatActivity() {
@@ -79,6 +80,8 @@ class HomePageActivity : AppCompatActivity() {
             // 这是"添加应用"按钮
             Toast.makeText(this, "Add new app", Toast.LENGTH_SHORT).show()
             // TODO: 打开应用选择器或文件浏览器
+            val dialogFragment = AppDialogFragment()
+            dialogFragment.show(supportFragmentManager, "AppDialogFragment")
         } else if (apkItem.isInstalled) {
             // 启动已安装的应用
             try {
