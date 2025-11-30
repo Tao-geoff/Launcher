@@ -16,9 +16,13 @@
             android:layout_width="195dp"
             android:layout_height="50dp"
             android:text="@string/recommended_apps"
+            android:textColor="@color/apps_dialog_text_color_selector"
             android:gravity="center"
             android:textSize="18sp"
             android:background="@drawable/apps_dialog_title_btn_back"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
             />
         <TextView
             android:id="@+id/installed_apps"
@@ -27,7 +31,11 @@
             android:text="@string/installed_apps"
             android:gravity="center"
             android:textSize="18sp"
+            android:textColor="@color/apps_dialog_text_color_selector"
             android:background="@drawable/apps_dialog_title_btn_back"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
             />
         <TextView
             android:id="@+id/folder"
@@ -36,7 +44,11 @@
             android:text="@string/folder"
             android:gravity="center"
             android:textSize="18sp"
+            android:textColor="@color/apps_dialog_text_color_selector"
             android:background="@drawable/apps_dialog_title_btn_back"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
             />
         <TextView
             android:id="@+id/system_apps"
@@ -45,7 +57,11 @@
             android:gravity="center"
             android:text="@string/system_apps"
             android:textSize="18sp"
+            android:textColor="@color/apps_dialog_text_color_selector"
             android:background="@drawable/apps_dialog_title_btn_back"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
             />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView

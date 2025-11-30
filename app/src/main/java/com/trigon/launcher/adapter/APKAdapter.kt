@@ -30,10 +30,19 @@ class APKAdapter (
         // 设置应用名称
         holder.apkName.text = apkItem.appName ?: "Unknown"
         
-        // 设置应用图标（如果有）
-        apkItem.iconRes?.let {
-            holder.apkButton.setBackgroundResource(it)
+        // 设置应用图标（支持 Drawable 和资源 ID）
+    when {
+        apkItem.iconDrawable != null -> {
+            holder.apkButton.background = apkItem.iconDrawable
         }
+        apkItem.iconRes != null -> {
+            holder.apkButton.setBackgroundResource(apkItem.iconRes)
+        }
+        else -> {
+            // 默认图标
+            holder.apkButton.setBackgroundResource(R.drawable.add_apk_selector)
+        }
+    }
         
         // 设置点击事件
         holder.apkButton.setOnClickListener {
@@ -72,5 +81,12 @@ class APKAdapter (
             apkList = newList
             notifyItemRemoved(position)
         }
+    }
+     // 在指定位置插入项目
+    fun insertItem(item: APKItem, position: Int) {
+        val newList = apkList.toMutableList()
+        newList.add(position, item)
+        apkList = newList
+        notifyItemInserted(position)
     }
 }

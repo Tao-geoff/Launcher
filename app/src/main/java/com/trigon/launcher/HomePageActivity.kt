@@ -66,39 +66,37 @@ class HomePageActivity : AppCompatActivity() {
         )
         )
 
-        // 示例：已安装的应用
-        apkList.add(APKItem(
-            packageName = "com.example.app1",
-            appName = "App 1",
-            iconRes = R.drawable.add_apk_selector,
-            isInstalled = true
-        ))
+//        // 示例：已安装的应用
+//        apkList.add(APKItem(
+//            packageName = "com.example.app1",
+//            appName = "App 1",
+//            iconRes = R.drawable.add_apk_selector,
+//            isInstalled = true
+//        ))
          apkAdapter.updateData(apkList)
     }
     private fun onApkItemClick(apkItem: APKItem, position: Int) {
         if (apkItem.packageName == null) {
-            // 这是"添加应用"按钮
-            Toast.makeText(this, "Add new app", Toast.LENGTH_SHORT).show()
-            // TODO: 打开应用选择器或文件浏览器
-            val dialogFragment = AppDialogFragment()
-            dialogFragment.show(supportFragmentManager, "AppDialogFragment")
-        } else if (apkItem.isInstalled) {
-            // 启动已安装的应用
-            try {
-                val intent = packageManager.getLaunchIntentForPackage(apkItem.packageName)
-                if (intent != null) {
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, "The application cannot be launched", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                Toast.makeText(this, "Startup failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            // 打开选择 APK 的对话框
+            val dialogFragment = AppDialogFragment.newInstance { selectedApk ->
+                // 回调：将选中的 APK 添加到首页
+                addApkToHomePage(selectedApk)
             }
+            dialogFragment.show(supportFragmentManager, "AppDialogFragment")
         } else {
-            // 未安装的应用，提示安装
-            Toast.makeText(this, "App not installed", Toast.LENGTH_SHORT).show()
-            // TODO: 触发安装流程
+            // 启动已添加的应用
+            //launchApp(apkItem.packageName)
         }
+    }
+    private fun addApkToHomePage(apkItem: APKItem) {
+        // 在"Add App"按钮之前插入
+        val insertPosition = apkList.size - 1
+        
+        // 同时更新列表和 Adapter
+        apkList.add(insertPosition, apkItem)
+        apkAdapter.insertItem(apkItem, insertPosition)
+        
+        Toast.makeText(this, "已添加 ${apkItem.appName}", Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -2,5 +2,7 @@
 <resources>
     <color name="apps_dialog_btn_selected">#dfe0db</color>
     <color name="apps_dialog_btn">#243735</color>
+    <color name="apps_dialog_tilte_focused">#000000</color>
+    <color name="apps_dialog_tilte_unfocused">#FFFFFF</color>
     <color name="Transparency">#00000000</color>
 </resources>

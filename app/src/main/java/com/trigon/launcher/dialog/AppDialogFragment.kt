@@ -33,6 +33,8 @@ class AppDialogFragment :DialogFragment() {
     private val installedApps = mutableListOf<APKItem>()
     private val systemApps = mutableListOf<APKItem>()
 
+    private var onApkSelected: ((APKItem) -> Unit)? = null
+
     // 当前选中的分类
     private var currentCategory = Category.RECOMMENDED
     enum class Category {
@@ -70,37 +72,89 @@ class AppDialogFragment :DialogFragment() {
         recyclerView = view.findViewById(R.id.apps_dialog_frame)
         
         // 设置点击监听
-        recommendedAppsTab.setOnClickListener {
-            showCategory(Category.RECOMMENDED)
+        recommendedAppsTab.setOnFocusChangeListener { v ,hasFocus ->
+            if(hasFocus)
+            {
+                showCategory(Category.RECOMMENDED)
+                v.isSelected  =true
+            }else
+            {
+                v.isSelected  =false
+            }
+
         }
         
-        installedAppsTab.setOnClickListener {
-            showCategory(Category.INSTALLED)
+        installedAppsTab.setOnFocusChangeListener {v, hasFocus ->
+            if(hasFocus)
+            {
+                showCategory(Category.INSTALLED)
+                v.isSelected  =true
+            }else
+             {
+                 v.isSelected  =false
+             }
         }
         
-        folderTab.setOnClickListener {
-            showCategory(Category.FOLDER)
+        folderTab.setOnFocusChangeListener {v,hasFocus ->
+            if(hasFocus)
+            {
+                showCategory(Category.FOLDER)
+                v.isSelected  =true
+            }else
+             {
+                 v.isSelected  =false
+             }
         }
         
-        systemAppsTab.setOnClickListener {
-            showCategory(Category.SYSTEM)
+        systemAppsTab.setOnFocusChangeListener {v,hasFocus ->
+            if(hasFocus)
+            {
+                showCategory(Category.SYSTEM)
+                v.isSelected =true
+            }else
+             {
+                 v.isSelected =false
+             }
+        }
+    }
+    companion object {
+        // 工厂方法，传入回调
+        fun newInstance(onApkSelected: (APKItem) -> Unit): AppDialogFragment {
+            return AppDialogFragment().apply {
+                this.onApkSelected = onApkSelected
+            }
         }
     }
     private fun initRecyclerView() {
         // 使用 GridLayoutManager，每行显示 3 个（根据您的布局宽度调整）
-        val spanCount = 3  // 893dp / 200dp ≈ 4 个，考虑padding用3个
+        val spanCount = 3
         recyclerView.layoutManager = GridLayoutManager(requireContext(), spanCount)
         
         // 初始化 Adapter
         apkAdapter = APKAdapter(emptyList()) { apkItem, position ->
-            onAppItemClick(apkItem, position)
+            onDialogItemClick(apkItem, position)
         }
         recyclerView.adapter = apkAdapter
         
         // TV 优化
-        recyclerView.isFocusable = true
-        recyclerView.isFocusableInTouchMode = false
+        //recyclerView.isFocusable = true
+       // recyclerView.isFocusableInTouchMode = false
     }
+
+     private fun onDialogItemClick(apkItem: APKItem, position: Int) {
+        // 将选中的 APK 回调给 HomePageActivity
+        onApkSelected?.invoke(apkItem)
+        
+        // 关闭对话框
+        dismiss()
+        
+        Toast.makeText(
+            requireContext(),
+            "已添加 ${apkItem.appName} 到首页",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
      /**
      * 获取机顶盒上所有已安装的应用
      */
