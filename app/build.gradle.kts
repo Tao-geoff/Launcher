@@ -41,4 +41,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    
+    // Palette API - 用于提取图像颜色
+    implementation("androidx.palette:palette-ktx:1.0.0")
 }

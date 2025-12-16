@@ -159,33 +159,38 @@ class AppDialogFragment :DialogFragment() {
      * 获取机顶盒上所有已安装的应用
      */
     private fun loadInstalledApps() {
-        val packageManager = requireContext().packageManager
-        
+        val packageManager =  requireContext().packageManager
+         val mainIntent = Intent(Intent.ACTION_MAIN,null).apply {
+             addCategory(Intent.CATEGORY_LAUNCHER)
+         }
         // 获取所有已安装的应用
-        val packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
+        //val packages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
+         val resolveInfos = packageManager.queryIntentActivities(mainIntent, PackageManager.MATCH_ALL)
         
         allApps.clear()
         installedApps.clear()
         systemApps.clear()
         
-        for (appInfo in packages) {
+        for (resolveInfo in resolveInfos) {
+            val appInfo = resolveInfo.activityInfo.applicationInfo
+            val packageName = appInfo.packageName
             // 跳过自己
             if (appInfo.packageName == requireContext().packageName) {
                 continue
             }
-            
+
             val apkItem = APKItem(
-                packageName = appInfo.packageName,
-                appName = appInfo.loadLabel(packageManager).toString(),
-                iconDrawable = appInfo.loadIcon(packageManager),
+                packageName = packageName,
+                appName = resolveInfo.loadLabel(packageManager).toString(),
+                iconDrawable = resolveInfo.loadIcon(packageManager), // 使用resolveInfo的loadIcon
                 isInstalled = true,
                 versionName = try {
-                    packageManager.getPackageInfo(appInfo.packageName, 0).versionName
+                    packageManager.getPackageInfo(packageName, 0).versionName
                 } catch (e: Exception) {
                     "Unknown"
                 },
                 versionCode = try {
-                    packageManager.getPackageInfo(appInfo.packageName, 0).longVersionCode
+                    packageManager.getPackageInfo(packageName, 0).longVersionCode
                 } catch (e: Exception) {
                     0L
                 }

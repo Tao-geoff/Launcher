@@ -51,6 +51,10 @@ class HomePageActivity : AppCompatActivity() {
         // 优化机顶盒遥控器焦点导航
         recyclerView.isFocusable = true
         recyclerView.isFocusableInTouchMode = false
+        
+        // 关键：禁用裁剪，允许子视图超出边界显示（用于缩放效果）
+        recyclerView.clipChildren = false
+        recyclerView.clipToPadding = false
     }
     private fun loadApkData(){
         // 示例数据 - 后期可以替换为实际的 APK 扫描
@@ -61,7 +65,7 @@ class HomePageActivity : AppCompatActivity() {
             APKItem(
             packageName = null,
             appName = "Add App",
-            iconRes = R.drawable.add_apk_selector,
+            iconRes = R.drawable.add_icon,
             isInstalled = false
         )
         )

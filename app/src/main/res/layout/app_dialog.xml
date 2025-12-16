@@ -70,6 +70,7 @@
         android:layout_height="576dp"
         android:background="@drawable/apps_dialog_background"
         android:padding="30dp"
+        android:paddingStart="50dp"
         android:layout_marginTop="30dp"
         >
     </androidx.recyclerview.widget.RecyclerView>

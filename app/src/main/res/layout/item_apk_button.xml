@@ -2,21 +2,39 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:focusable="true"
+    android:focusableInTouchMode="false"
+    android:descendantFocusability="blocksDescendants">
     <LinearLayout
+        android:id="@+id/apk_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-        <Button
+        <!-- 可点击的容器，保持原来的 apk_button ID -->
+        <FrameLayout
             android:id="@+id/apk_button"
             android:layout_width="200dp"
             android:layout_height="112dp"
-            android:background="@drawable/add_apk_selector"
-            android:gravity="center"
-            android:padding="8dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true" />
+            android:clickable="false"
+            android:focusable="false"
+            android:background="@drawable/apk_item_background">
+            
+            <!-- APK 图标 ImageView -->
+            <ImageView
+                android:id="@+id/apk_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+
+                 />
+        </FrameLayout>
+        
         <TextView
             android:id="@+id/apk_name"
             android:layout_width="wrap_content"
